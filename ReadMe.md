@@ -33,10 +33,16 @@ The solution used must be efficient which means metrics must be used against it
 
 #### Means of gauging performance
 
-* Djikstra's for pathing efficiency
-* comparative between bots for item value over time considering weights and volumes
+One of the obvious metics is whether the bot has taken the optimal path through its shopping list. To determine the optimal path the factory can be turned into a finite state space, therefore being observed as a graph which would have the optimal path found by Djikstra's algorithm.\
+Determination of whether a bot is making valuable decisions would be based on times for when an item was ordered, the priority it was ordered with and the cost of the item.
 
-#### Potential means of the bots' reasoning
+Therefore performance metrics can be listed as:
+
+1. Distance traveled to deliver shopping list over Djikstra's calculated distance
+2. bonus for clustering of multiple items collected
+3. Value of delivered items as the: sum of all items' (dollar value times priority multiplier times (total time minus time left))
+
+#### Potential means of the bots' implementation
 
 * Hive mind
 * neural nets
@@ -47,3 +53,9 @@ The solution used must be efficient which means metrics must be used against it
 * picking up new items for its "shopping list" while actively searching so that higher priority items get out faster, if necessary.
   * item time restrictions
   * item values
+
+A number of different designs could be implemented first thing is to determine the base of whether to implement a hivemind infrastructure or to implement a client server based approach. For the hivemind one algorithm would control all of the bots in the factory given them direcitons step by step or a list of instructions. The alternative approach is to have bots act as agents who can either be given shopping lists by a overarching algorith or select the items they want to collect themselves.
+
+The hivemind implementation leaves less interesting implementation options, it restricts the algorithm implementations to a single overarching algorithm in charge of the bots' movement. The same applies for the option of having the server determine the agent's next shopping list item. If the bot can choose its own path and choose the next shopping items it can make for a very interesting system where the bots could all be running different algorithms. Although potentially less functional this design would provide far more variations of the data and allow for further investigation into what makes a good algorithm.
+
+I believe I'll implement client server and if I have the time the bots will pick the shopping list items they want. The bots will do their pathing and prioritization by a genetic algorithm which will produce different algorithms running across many bots. This will create a space where the bots can compete for breeding potential based on their scores. The underlying algorithm which is being bred will likely be a simple feed forward neural netword design. The neural net would be instatiated to random values over some standard variation and have a randomized design. The more successful nerual nets will be allowed to breed and reimplemented into the least successful bots. The process will be allowed to go on constantly runing the warehouse until a desireable performance metric can be met by the general population of the bots.
