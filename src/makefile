@@ -10,7 +10,7 @@ LIBS = -lm
 _DEPS = #Not using any RN
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Program.o Warehouse.o AI.o BFS.o
+_OBJ = BFS.o Bot.o Floor.o Product.o Purchase.o Warehouse.o Program.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
