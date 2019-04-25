@@ -4,6 +4,7 @@
 class Purchase {
     public:
         Purchase(vector<Product*> p);
+        ~Purchase();
         
         int getNumItems();
         vector<Product*> getProducts();

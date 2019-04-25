@@ -17,5 +17,6 @@ int main(int argc, char *argv[]){
     for (auto it = arr.begin(); it != arr.end(); ++it)
         cout << (*it)->getName() << endl;
 
+    delete p;
     return 0;
 }
