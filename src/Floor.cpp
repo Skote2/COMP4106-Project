@@ -4,13 +4,20 @@
 
 Floor::Floor()                  : length(12), width(16) { initializeGrid(); }
 Floor::Floor(short l, short w)  : length(l) , width(w)  { initializeGrid(); }
+Floor::Floor(Floor* f2) : Floor(std::get<0>(f2->getDimensions()), std::get<1>(f2->getDimensions())) {
+    for (short l = 0; l < length; ++l)
+        for (short w = 0; w < width; ++w)
+            grid[l][w] = f2->grid[l][w];
+}
 
 //////////////////////
 // Public Functions //
 //////////////////////
 
-//Getters
+// Getters & Setters
 std::tuple<short, short> Floor::getDimensions() { return std::make_tuple(length, width);  }
+bool Floor::getState(short x, short y) { return grid[x][y]; }
+void Floor::setState(bool s) { grid[length][width] = s; }
 
 std::string Floor::toString() {
     std::string s = "┌";
@@ -30,6 +37,7 @@ std::string Floor::toString() {
     s += "┘\n";
     return s;
 }
+
 
 ///////////////////
 //Private helpers//

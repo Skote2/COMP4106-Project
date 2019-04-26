@@ -5,8 +5,9 @@
 class AI {
     public:
         virtual std::queue<Floor::move>* getShoppingList() = 0;
-    private:
+    protected:
         short x;
         short y;
         std::queue<Floor::move>* shoppingList;
+        Floor searchBase;
 };

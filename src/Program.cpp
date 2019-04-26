@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Purchase.h"
+#include "Floor.h"
 
 using namespace std;
 
@@ -18,5 +19,8 @@ int main(int argc, char *argv[]){
         cout << (*it)->getName() << endl;
 
     delete p;
+    Floor* f = new Floor();
+    cout << f->toString() << endl;
+    delete f;
     return 0;
 }
